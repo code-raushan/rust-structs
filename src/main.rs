@@ -5,6 +5,28 @@ struct User {
     active: bool,
 }
 
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+// method syntax
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+// associative function
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+
 fn main() {
     let mut u1 = User {
         email: String::from("raushan@email.com"),
@@ -31,6 +53,21 @@ fn main() {
     };
 
     println!("{}", u3.active);
+
+    // tuple struct
+    struct _Color(i32, i32, i32);
+
+    struct _Point(i32, i32, i32); 
+
+    let rect = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    println!("Area of rectangle: {}", rect.area());
+
+    let sq = Rectangle::square(22);
+    println!("Area of square: {}", sq.area());
 }
 
 fn build_user(email: String, username: String)-> User {
